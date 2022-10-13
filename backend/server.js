@@ -1,10 +1,15 @@
 // express is our backend framework for handling api requests
 const express = require("express");
 
+const colors = require("colors")
+
+
 // dotenv allows us to have environment variables in our application
 const dotenv = require("dotenv").config();
 
 const { errorHandler } = require("./middleware/errorMiddleware")
+const { connectDB } = require("./config/db");
+
 
 // we want our server or api to run on the port 8000, so anytime we make a request to localhost 8000,
 // we expect to find our server run on it.
@@ -13,6 +18,8 @@ const { errorHandler } = require("./middleware/errorMiddleware")
 //  the require () works like imports. it imports all these frameworks and libraries into our applcation
 const port = process.env.PORT;
 
+
+connectDB()
 
 // const app is used to initialize express into our application after it has been imported into the application.
 const app = express();
